@@ -6,11 +6,11 @@ function LandingPage({ title, user }) {
 
   return (
     <>
-      <Navbar/>
+      <Navbar user={user}/>
       <Banner/>
       <h1>THIS IS A TITLE: {title} {user ? user.user_information.email : 'no user' } </h1>
     </>
   )
 }
 
-export default LandingPage
+export default LandingPage;
