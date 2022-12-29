@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import LoginForm from '../../components/LoginForm';
 import Navbar from '../../components/Navbar';
+import { Navigate } from "react-router-dom";
 
 const Login = ({handleLogin}) => {
   // State for the Login form.
   const [logInInformation, setLogInInformation] = useState({})
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   // User token that will be used to insert into the user object, so it can be used to
   // in the head of other requests.
   let userToken = ''
@@ -36,14 +37,19 @@ const Login = ({handleLogin}) => {
       })
       .then(data => {
         //This function it's called from the App component, it's porpuse is to set the currentUser in the sessionStorage.
-        handleLogin({ user_information: data.status.data, user_token: userToken})
+        handleLogin({ user_information: data.status.data, user_token: userToken});
+        setUser({ user_information: data.status.data, user_token: userToken})
       })
+
   };
 
   return (
     <div>
       <Navbar user={user}/>
       <LoginForm handleChange={handleChange} handleSubmit={handleSubmit}/>
+      {user && (
+          <Navigate to="/test" replace={true} />
+        )}
     </div>
   )
 }
