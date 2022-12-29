@@ -3,7 +3,7 @@ import React from 'react'
 function Banner() {
   return (
     <div className="w-full bg-cover bg-art-background h-96">
-        <div class="flex items-center justify-center h-full w-full bg-gray-900 bg-opacity-50">
+        <div className="flex items-center justify-center h-full w-full bg-gray-900 bg-opacity-50">
             <div className="text-center">
                 <h1 className="text-white text-2xl font-semibold uppercase md:text-3xl">Rent and lend Art from the comfort of your home!</h1>
                 <p className='text-white text-sm'>Maybe you need to make an amazing event or you just want your hope to have a fresh look.. Well, we have your back!</p>
