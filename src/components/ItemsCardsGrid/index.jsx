@@ -16,7 +16,7 @@ const ItemsCardsGrid = () => {
 
 console.log(items)
   return (
-    <div className="container mx-auto flex flex-wrap">
+    <div className="container mx-auto flex flex-wrap pt-16">
       {items.map(item =>(
         <div className='w-1/4 p-2'>
           <ItemCard key={item.id}
@@ -28,24 +28,6 @@ console.log(items)
           />
         </div>
       ))}
-      <div className='w-1/4 p-2'>
-        <ItemCard/>
-      </div>
-      <div className='w-1/4 p-2'>
-        <ItemCard/>
-      </div>
-      <div className='w-1/4 p-2'>
-        <ItemCard/>
-      </div>
-      <div className='w-1/4 p-2'>
-        <ItemCard/>
-      </div>
-      <div className='w-1/4 p-2'>
-        <ItemCard/>
-      </div>
-      <div className='w-1/4 p-2'>
-        <ItemCard/>
-      </div>
     </div>
   )
 }
