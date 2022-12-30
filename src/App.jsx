@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import HomePage from './pages/HomePage';
+import ItemPage from './pages/ItemPage';
 import {
   createBrowserRouter,
   RouterProvider
@@ -40,6 +41,10 @@ function App() {
     {
       path: "/home",
       element: <HomePage user={currentUser}/>,
+    },
+    {
+      path: "/item/:id",
+      element: <ItemPage />,
     }
   ]);
 
