@@ -1,12 +1,12 @@
 import React from 'react'
 import Navbar from '../../components/Navbar'
-import ItemCard from '../../components/ItemCard'
+import ItemsCardsGrid from '../../components/ItemsCardsGrid'
 
 function HomePage({ user }) {
   return (
     <>
-      <Navbar user={user}/>
-      <ItemCard/>
+      < Navbar user={user} />
+      < ItemsCardsGrid />
     </>
   )
 }
