@@ -44,7 +44,7 @@ function App() {
     },
     {
       path: "/item/:id",
-      element: <ItemPage />,
+      element: <ItemPage user={currentUser} />,
     }
   ]);
 

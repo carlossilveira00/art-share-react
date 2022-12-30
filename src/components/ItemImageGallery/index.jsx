@@ -3,7 +3,7 @@ import React from 'react'
 const ItemImageGallery = () => {
   return (
     <>
-      <div className='container mx-auto w-4/6'>
+      <div className='container mx-auto w-4/6 pt-24 mb-2'>
         <h3 className="font-bold text-xl ml-2 mb-0">TITLE</h3>
         <small className="text-green-500 text-xs ml-2 uppercase">CATEGORY - </small>
         <span className="text-green-500 text-xs underline uppercase">LOCATION</span>
