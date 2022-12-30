@@ -20,6 +20,7 @@ console.log(items)
       {items.map(item =>(
         <div className='w-1/4 p-2'>
           <ItemCard key={item.id}
+            id={item.id}
             name={item.name}
             price={item.price}
             description={item.description}
