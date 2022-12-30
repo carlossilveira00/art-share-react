@@ -9,9 +9,9 @@ const ItemCard = () => {
           <span className="absolute top-0 right-0 text-white bg-green-400 rounded-full px-3 py-1 mt-1">$150</span>
         </div>
         <div className="p-4">
-          <small class="text-green-500 text-xs uppercase">CATEGORY</small>
+          <small className="text-green-500 text-xs uppercase">CATEGORY</small>
           <h3 className="font-bold text-xl mb-2 mr-20">THIS IS A TITLE</h3>
-          <p class="text-sm tracking-tight font-light text-slate-600 leading-6">Dodge is an American brand of automobiles and a division of Stellantis, based in Auburn Hills, Michigan..</p>
+          <p className="text-sm tracking-tight font-light text-slate-600 leading-6">Dodge is an American brand of automobiles and a division of Stellantis, based in Auburn Hills, Michigan..</p>
         </div>
       </div>
     </div>
