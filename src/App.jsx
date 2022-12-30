@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
+import HomePage from './pages/HomePage';
 import {
   createBrowserRouter,
   RouterProvider
@@ -30,15 +31,15 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LandingPage title="THIS IS A TITLE" user={currentUser}/>,
+      element: <LandingPage user={currentUser}/>,
     },
     {
       path: "/login",
       element: <Login handleLogin={handleLogin}/>,
     },
     {
-      path: "/test",
-      element: <div>HELLO WORLD</div>,
+      path: "/home",
+      element: <HomePage user={currentUser}/>,
     }
   ]);
 
