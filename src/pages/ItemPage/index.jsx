@@ -1,8 +1,15 @@
 import React from 'react'
+import ItemImageGallery from '../../components/ItemImageGallery';
+import Navbar from '../../components/Navbar';
+import ItemDescription from '../../components/ItemDescription';
 
-const ItemPage = () => {
+const ItemPage = ({user}) => {
   return (
-    <div>ItemPage</div>
+  <>
+    <Navbar user={user}/>
+    <ItemImageGallery />
+    <ItemDescription/>
+  </>
   )
 }
 
