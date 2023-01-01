@@ -1,12 +1,12 @@
 import React from 'react'
 
-const ItemImageGallery = () => {
+const ItemImageGallery = ({ name, category, location }) => {
   return (
     <>
       <div className='container mx-auto w-4/6 pt-24 mb-2'>
-        <h3 className="font-bold text-xl ml-2 mb-0">TITLE</h3>
-        <small className="text-green-500 text-xs ml-2 uppercase">CATEGORY - </small>
-        <span className="text-green-500 text-xs underline uppercase">LOCATION</span>
+        <h3 className="font-bold text-xl ml-2 mb-0">{name}</h3>
+        <small className="text-green-500 text-xs ml-2 uppercase">{category} - </small>
+        <span className="text-green-500 text-xs underline uppercase">{location}</span>
       </div>
       <div className="container m-auto w-4/6 flex">
         <img src="https://images.unsplash.com/photo-1672330145676-03a5b7cf7bde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Big image" className="w-1/2 rounded-l-lg" />

@@ -3,12 +3,13 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from 'react';
 
-const RentingCard = () => {
+const RentingCard = ({price}) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [days, setDays] = useState(0)
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [days, setDays] = useState(1)
+  const [totalDaysPrice, setTotalDaysPrice] = useState(0)
   const [fee, setFee] = useState(10)
+  const [totalPrice, setTotalPrice] = useState(0);
 
   //Function to set the starting date when choosed.
   const handleStartDateChange = (date) => {
@@ -31,13 +32,15 @@ const RentingCard = () => {
       //Set this value to a state so it can be used in the card as a variable.
       setDays(numberOfDays);
       // Calculate total price, that is, the number of days for the price per day of the item.
-      const totalDaysPrice = numberOfDays * 150;
+      const itemsTotalDaysPrice = numberOfDays * price
+      setTotalDaysPrice(itemsTotalDaysPrice)
       // Calculate the fee, that is, 10% of the total price.
-      const itemFee = totalDaysPrice * 0.1;
       //Set this fee in state so you can use it in the card.
+      const itemFee = itemsTotalDaysPrice * 0.1
       setFee(itemFee)
       //Return the totalDaysPrice + the Fee.
-      return totalDaysPrice + itemFee;
+
+      return itemsTotalDaysPrice + itemFee;
     }
     return 0;
   };
@@ -45,7 +48,7 @@ const RentingCard = () => {
   return (
     <>
     <div className="sticky border-2 rounded-xl shadow-xl top-0 p-7">
-      <h5 className="mb-4"><strong>$150</strong> Day</h5>
+      <h5 className="mb-4"><strong>${price}</strong> Day</h5>
       <div className='border-2 rounded-xl text-center'>
         <div className='flex p-2'>
           <div className="border-r-2">
@@ -78,8 +81,8 @@ const RentingCard = () => {
       <p className='text-center text-xs mb-6'>Charged after Lessor confirms order.</p>
       <div className=' border-b-2'>
         <div className='flex justify-between'>
-          <h5 className="font-bold underline mb-2">150$ x {days} Days</h5>
-          <span>8999$</span>
+          <h5 className="font-bold underline mb-2">${price} x {days} Days</h5>
+          <span>{totalDaysPrice}</span>
         </div>
         <div className='flex justify-between'>
           <h5 className="font-bold underline mb-4">Fee</h5>
