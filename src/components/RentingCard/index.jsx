@@ -10,24 +10,33 @@ const RentingCard = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [fee, setFee] = useState(10)
 
-
+  //Function to set the starting date when choosed.
   const handleStartDateChange = (date) => {
     setStartDate(date);
+    //Run calculatePrice if the start date is changed.
     setTotalPrice(calculatePrice(date, endDate));
   };
-
+  //Function to set the ending date when choosed.
   const handleEndDateChange = (date) => {
     setEndDate(date);
+    //Run calculatePrice if the end date is changed.
     setTotalPrice(calculatePrice(startDate, date));
   };
-
+  //Calculate the price for the total amount of days times the price of the item.
   const calculatePrice = (start, end) => {
+    //If the user picked a starting and an ending date then run, else return 0.
     if (start && end) {
+      //Calculate the number of days between then starting date and the ending date.
       const numberOfDays = Math.round((end - start) / (1000 * 60 * 60 * 24));
+      //Set this value to a state so it can be used in the card as a variable.
       setDays(numberOfDays);
+      // Calculate total price, that is, the number of days for the price per day of the item.
       const totalDaysPrice = numberOfDays * 150;
+      // Calculate the fee, that is, 10% of the total price.
       const itemFee = totalDaysPrice * 0.1;
+      //Set this fee in state so you can use it in the card.
       setFee(itemFee)
+      //Return the totalDaysPrice + the Fee.
       return totalDaysPrice + itemFee;
     }
     return 0;
@@ -46,6 +55,7 @@ const RentingCard = () => {
             <DatePicker
               selected={startDate}
               onChange={handleStartDateChange}
+              placeholderText="Click to select a date"
               className="block w-full bg-white rounded-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
@@ -56,6 +66,7 @@ const RentingCard = () => {
             <DatePicker
               selected={endDate}
               onChange={handleEndDateChange}
+              placeholderText="Click to select a date"
               className="block w-full bg-white rounded-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
