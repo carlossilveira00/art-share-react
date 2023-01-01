@@ -29,7 +29,7 @@ const Login = ({handleLogin}) => {
       body: JSON.stringify({user: logInInformation})
     };
     // POST Request to the API
-    fetch('http://localhost:3000//users/sign_in', login)
+    fetch('http://localhost:3000/users/sign_in', login)
       .then(response => {
         // Extract the user token from the headers of the API response.
         userToken = response.headers.get('Authorization')

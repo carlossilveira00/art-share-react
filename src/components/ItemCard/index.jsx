@@ -5,7 +5,7 @@ const ItemCard = ( { id,name, description, category, price, image_url } ) => {
   const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <a href={`/item/${id}`}>
+    <a href={`/items/${id}`}>
     <div className="`w-4/4 px-2 py-4"
     onMouseEnter={() => setIsHovering(true)}
     onMouseLeave={() => setIsHovering(false)}
