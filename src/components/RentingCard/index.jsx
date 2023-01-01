@@ -2,8 +2,9 @@ import React from 'react'
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from 'react';
+import axios from 'axios';
 
-const RentingCard = ({price}) => {
+const RentingCard = ({user_id, price, item_id}) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [days, setDays] = useState(1)
@@ -45,6 +46,22 @@ const RentingCard = ({price}) => {
     return 0;
   };
 
+  //Function to handle the submit of the renting information to the API
+  const handleSubmit = () => {
+    const rentingInformation = {
+      "item_id": item_id,
+      "user_id": user_id,
+      "starting_date": startDate,
+      "ending_date": endDate,
+      "status": "Pending",
+      "total_value": totalPrice
+
+    };
+
+    axios.post("http://localhost:3000/reservations", rentingInformation)
+    .then(response => console.log(response))
+  };
+
   return (
     <>
     <div className="sticky border-2 rounded-xl shadow-xl top-0 p-7">
@@ -75,7 +92,7 @@ const RentingCard = ({price}) => {
           </div>
         </div>
       </div>
-      <button className="text-white mt-4 mb-2 text-lg w-full focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-green-500 dark:hover:bg-green-600">
+      <button onClick={handleSubmit} className="text-white mt-4 mb-2 text-lg w-full focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-green-500 dark:hover:bg-green-600">
         Rent Now
       </button>
       <p className='text-center text-xs mb-6'>Charged after Lessor confirms order.</p>

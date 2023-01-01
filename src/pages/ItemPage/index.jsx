@@ -16,7 +16,6 @@ const ItemPage = ({user}) => {
     .then(response => setItem(response.data))
   },[]);
 
-  console.log(item)
   return (
   <>
     <Navbar user={user}/>
@@ -26,6 +25,8 @@ const ItemPage = ({user}) => {
       location = {item.location}
     />
     <ItemDescription
+      user_id = {user.user_information.id}
+      item_id={item.id}
       name = {item.name}
       description = {item.description}
       category = {item.category}

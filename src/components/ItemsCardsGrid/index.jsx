@@ -14,7 +14,6 @@ const ItemsCardsGrid = () => {
     .then(response => setItems(response.data))
   },[]);
 
-console.log(items)
   return (
     <div className="container mx-auto flex flex-wrap pt-16">
       {items.map(item =>(

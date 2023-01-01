@@ -1,7 +1,8 @@
 import React from 'react'
 import RentingCard from '../RentingCard';
 
-const ItemDescription = ({ key, name, description, category, price }) => {
+const ItemDescription = ({ item_id, user_id, description, price }) => {
+
   return (
     <div className=" container mx-auto w-4/6 pt-10 flex">
     <div className="w-3/5 p-6">
@@ -18,8 +19,9 @@ const ItemDescription = ({ key, name, description, category, price }) => {
     </div>
     <div className="w-2/5 p-6">
       <RentingCard
-        key = {key}
+        item_id = {item_id}
         price = {price}
+        user_id = {user_id}
       />
     </div>
   </div>
