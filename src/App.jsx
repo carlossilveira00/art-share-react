@@ -50,11 +50,11 @@ function App() {
     },
     {
       path: "/create-rental-item",
-      element: <CreateRentalItemPage user={currentUser} />,
+      element: <CreateRentalItemPage user={currentUser}/>,
     },
     {
       path: "/profile",
-      element: <ProfilePage/>,
+      element: <ProfilePage user={currentUser}/>,
     }
   ]);
 
