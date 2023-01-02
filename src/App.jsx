@@ -8,6 +8,7 @@ import {
   RouterProvider
 } from "react-router-dom";
 import CreateRentalItemPage from './pages/CreateRentalItemPage';
+import ProfilePage from './pages/ProfilePage';
 
 
 function App() {
@@ -50,6 +51,10 @@ function App() {
     {
       path: "/create-rental-item",
       element: <CreateRentalItemPage user={currentUser} />,
+    },
+    {
+      path: "/profile",
+      element: <ProfilePage/>,
     }
   ]);
 
