@@ -4,6 +4,7 @@ import Navbar from '../../components/Navbar';
 import ItemDescription from '../../components/ItemDescription';
 import Map from '../../components/Map';
 import axios from 'axios';
+import Footer from '../../components/Footer';
 import { useLocation } from 'react-router-dom';
 
 const ITEM_API = "http://localhost:3000"
@@ -37,6 +38,7 @@ const ItemPage = ({user}) => {
      <Map
       location = {item.location}
      />
+     <Footer/>
   </>
   )
 }

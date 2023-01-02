@@ -20,7 +20,7 @@ const Map = ({location}) => {
 
   console.log(location)
   return (
-    <div className='container mx-auto w-4/6'>
+    <div className='container mx-auto w-4/6 mb-6'>
           <ItemMap
           zoom={[9]}
           center={coordinates}
