@@ -18,6 +18,7 @@ const CreateRentalItemPage = ({ user }) => {
   // This function will take care of taking the itemInformation state and sending it to the API through an POST request.
   const handleSubmit = () => {
     axios.post('http://localhost:3000/items', itemInformation)
+    //Redirect to Home after submission of the form.
     navigate('/home');
   };
 
