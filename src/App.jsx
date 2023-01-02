@@ -7,6 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider
 } from "react-router-dom";
+import CreateRentalItemPage from './pages/CreateRentalItemPage';
 
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
     {
       path: "/items/:id",
       element: <ItemPage user={currentUser} />,
+    },
+    {
+      path: "/create-rental-item",
+      element: <CreateRentalItemPage user={currentUser} />,
     }
   ]);
 

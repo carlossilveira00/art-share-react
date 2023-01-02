@@ -25,7 +25,7 @@ const Navbar = ({user}) => {
         {isOpen && (
           <div className="absolute right-0 z-10 mt-2 py-2 bg-white rounded-lg shadow-xl">
             <a className="block px-4 py-2 text-gray-700 hover:bg-gray-800" href="#">Profile</a>
-            <a className="block px-4 py-2 text-gray-700 hover:bg-gray-800" href="#">Another action</a>
+            <a className="block px-4 py-2 text-gray-700 hover:bg-gray-800" href="/create-rental-item">Lease an Item</a>
             <a className="block px-4 py-2 text-gray-700 hover:bg-gray-800" href="#">Something else</a>
           </div>
         )}
