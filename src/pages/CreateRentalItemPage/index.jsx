@@ -3,8 +3,10 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import CreateItemForm from '../../components/CreateItemForm';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 const CreateRentalItemPage = ({ user }) => {
+  const navigate = useNavigate();
   // Set Item information that will be send to the DB through a POST request to create an Item.
   const [itemInformation, setItemInformation] = useState({});
   // Handle the change of of each field in the form to then set the state of the itemInformation.
@@ -16,7 +18,7 @@ const CreateRentalItemPage = ({ user }) => {
   // This function will take care of taking the itemInformation state and sending it to the API through an POST request.
   const handleSubmit = () => {
     axios.post('http://localhost:3000/items', itemInformation)
-    .then(response => console.log(response))
+    navigate('/home');
   };
 
   return (
