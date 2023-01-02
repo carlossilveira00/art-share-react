@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ItemImageGallery from '../../components/ItemImageGallery';
 import Navbar from '../../components/Navbar';
 import ItemDescription from '../../components/ItemDescription';
+import Map from '../../components/Map';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 
@@ -32,6 +33,9 @@ const ItemPage = ({user}) => {
       category = {item.category}
       location = {item.location}
       price = {item.price}
+     />
+     <Map
+      location = {item.location}
      />
   </>
   )
