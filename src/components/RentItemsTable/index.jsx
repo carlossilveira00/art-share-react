@@ -31,7 +31,7 @@ const RentItemsTable = ({ content }) => {
 
 
   return (
-    <Paper sx={{ overflow: 'hidden' }} className="w-3/4 ">
+    <Paper sx={{ overflow: 'hidden' }}>
           <TableContainer sx={{ maxHeight: 440 }}>
             <Table stickyHeader aria-label="sticky table">
               <TableHead >

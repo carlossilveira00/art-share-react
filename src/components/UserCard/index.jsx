@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserCard = () => {
+const UserCard = ({ items, renting, completed}) => {
   return (
     <div class=" w-1/4 min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
           <div class="px-6">
@@ -13,16 +13,16 @@ const UserCard = () => {
                   <div class="w-full text-center mt-20">
                       <div class="flex justify-center lg:pt-4 pt-8 pb-0">
                           <div class="p-3 text-center">
-                              <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">3</span>
+                              <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">{items}</span>
                               <span class="text-sm text-slate-400">My Items</span>
                           </div>
                           <div class="p-3 text-center">
-                              <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">2</span>
+                              <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">{completed}</span>
                               <span class="text-sm text-slate-400">Completed Renting</span>
                           </div>
 
                           <div class="p-3 text-center">
-                              <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">563</span>
+                              <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">{renting}</span>
                               <span class="text-sm text-slate-400">Currently Renting</span>
                           </div>
                       </div>

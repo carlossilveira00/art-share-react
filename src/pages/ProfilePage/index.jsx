@@ -76,28 +76,28 @@ const ProfilePage = ({user}) => {
       <Navbar user={user} />
       <div className='container mx-auto flex mt-24'>
         {/* This section is the profile card */}
-        <UserCard/>
+        <UserCard items={userItems.length} renting={currentRentings.length} completed={completedRentings.length}/>
         {/* This section is the profile card */}
 
         {/* This section is the Items Board */}
-        <Box sx={{ width: '80%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Currently Renting" {...a11yProps(0)} />
-          <Tab label="Completed Rentings" {...a11yProps(1)} />
-          <Tab label="My Items" {...a11yProps(2)} />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
-        < RentItemsTable content={currentRentings}/>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-      < RentItemsTable content={completedRentings}/>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <ItemsTable content={userItems} />
-      </TabPanel>
-    </Box>
+        <Box sx={{ width: '80%' }} className=" w-3/4 ml-24">
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+              <Tab label="Currently Renting" {...a11yProps(0)} />
+              <Tab label="Completed Rentings" {...a11yProps(1)} />
+              <Tab label="My Items" {...a11yProps(2)} />
+            </Tabs>
+          </Box>
+          <TabPanel value={value} index={0}>
+            < RentItemsTable content={currentRentings}/>
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            < RentItemsTable content={completedRentings}/>
+          </TabPanel>
+          <TabPanel value={value} index={2}>
+            <ItemsTable content={userItems} />
+          </TabPanel>
+        </Box>
         {/* This section is the Items Board */}
       </div>
     </>
