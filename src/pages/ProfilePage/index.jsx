@@ -47,6 +47,7 @@ const ProfilePage = ({user}) => {
   const [currentRentings, setCurrentRentings] = useState([]);
   const [completedRentings, setCompletedRentings] = useState([]);
   const [userItems, setUserItems]= useState([]);
+  const [pendingRequests, setPendingRequests] = useState([]);
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -71,6 +72,12 @@ const ProfilePage = ({user}) => {
     .then(response => setUserItems(response.data) )
   },[]);
 
+  // Fetch all the Items that have a status of pending and they belong to the current user.
+  useEffect(() => {
+    axios.get("http://localhost:3000/pending_reservations", { params: {user_id: user.user_information.id}})
+    .then(response => setPendingRequests(response.data))
+  },[]);
+
   return (
     <>
       <Navbar user={user} />
@@ -86,6 +93,7 @@ const ProfilePage = ({user}) => {
               <Tab label="Currently Renting" {...a11yProps(0)} />
               <Tab label="Completed Rentings" {...a11yProps(1)} />
               <Tab label="My Items" {...a11yProps(2)} />
+              <Tab label="Pending Requests" {...a11yProps(3)} />
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
@@ -95,6 +103,9 @@ const ProfilePage = ({user}) => {
             < RentItemsTable content={completedRentings}/>
           </TabPanel>
           <TabPanel value={value} index={2}>
+            <ItemsTable content={userItems} />
+          </TabPanel>
+          <TabPanel value={value} index={3}>
             <ItemsTable content={userItems} />
           </TabPanel>
         </Box>
