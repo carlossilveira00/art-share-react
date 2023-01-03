@@ -1,38 +1,56 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar';
-import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
 import UserCard from '../../components/UserCard';
+import RentItemsTable from '../../components/RentItemsTable';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import ItemsTable from '../../components/ItemsTable';
 
-const columns = [
-  { id: 'item_name', label: 'Name', minWidth: 170 },
-  { id: 'starting_date', label: 'Starting Date', minWidth: 100 },
-  { id: 'ending_date', label: 'Ending Date', minWidth: 100 },
-  { id: 'status', label: 'Status', minWidth: 100 },
-  { id: 'total_value', label: 'Value', minWidth: 100 }
-];
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+};
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+};
 
 const ProfilePage = ({user}) => {
-  const [page, setPage] = React.useState(0);
-  const [tabIndex, setTabIndex] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [currentRentings, setCurrentRentings] = useState([]);
+  const [completedRentings, setCompletedRentings] = useState([]);
+  const [userItems, setUserItems]= useState([]);
+  const [value, setValue] = React.useState(0);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   //Fetch all the Item you're currently renting
@@ -41,6 +59,17 @@ const ProfilePage = ({user}) => {
     .then(response => setCurrentRentings(response.data))
   },[]);
 
+  //Fetch all the Item you completed renting
+  useEffect(() => {
+    axios.get("http://localhost:3000/completed_reservations", { params: {user_id: user.user_information.id}})
+    .then(response => setCompletedRentings(response.data) )
+  },[]);
+
+  //Fetch all the Items that you created.
+  useEffect(() => {
+    axios.get("http://localhost:3000/user_items", { params: {user_id: user.user_information.id}})
+    .then(response => setUserItems(response.data) )
+  },[]);
 
   return (
     <>
@@ -51,54 +80,24 @@ const ProfilePage = ({user}) => {
         {/* This section is the profile card */}
 
         {/* This section is the Items Board */}
-        <Paper sx={{ overflow: 'hidden' }} className="w-3/4 ">
-          <TableContainer sx={{ maxHeight: 440 }}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead >
-                <TableRow >
-                  {columns.map((column) => (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      style={{ minWidth: column.minWidth, backgroundColor: 'lightgray' }}
-                    >
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {currentRentings
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((currentRenting) => {
-                    return (
-                      <TableRow hover role="checkbox" tabIndex={-1} key={currentRenting.code}>
-                        {columns.map((column) => {
-                          const value = currentRenting[column.id];
-                          return (
-                            <TableCell key={column.id} align={column.align}>
-                              {column.format && typeof value === 'number'
-                                ? column.format(value)
-                                : value}
-                            </TableCell>
-                          );
-                        })}
-                      </TableRow>
-                    );
-                  })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10, 25, 100]}
-            component="div"
-            count={currentRentings.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
+        <Box sx={{ width: '80%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Currently Renting" {...a11yProps(0)} />
+          <Tab label="Completed Rentings" {...a11yProps(1)} />
+          <Tab label="My Items" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+      <TabPanel value={value} index={0}>
+        < RentItemsTable content={currentRentings}/>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+      < RentItemsTable content={completedRentings}/>
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <ItemsTable content={userItems} />
+      </TabPanel>
+    </Box>
         {/* This section is the Items Board */}
       </div>
     </>

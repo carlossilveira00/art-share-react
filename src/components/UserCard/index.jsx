@@ -18,7 +18,7 @@ const UserCard = () => {
                           </div>
                           <div class="p-3 text-center">
                               <span class="text-xl font-bold block uppercase tracking-wide text-slate-700">2</span>
-                              <span class="text-sm text-slate-400">Rented Items</span>
+                              <span class="text-sm text-slate-400">Completed Renting</span>
                           </div>
 
                           <div class="p-3 text-center">
