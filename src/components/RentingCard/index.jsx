@@ -60,6 +60,7 @@ const RentingCard = ({user_id, price, item_id}) => {
 
     axios.post("http://localhost:3000/reservations", rentingInformation)
     .then(response => console.log(response))
+
   };
 
   return (
