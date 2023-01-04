@@ -9,10 +9,11 @@ import {
 } from "react-router-dom";
 import CreateRentalItemPage from './pages/CreateRentalItemPage';
 import ProfilePage from './pages/ProfilePage';
+import { Navigate } from "react-router-dom";
 
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null);
 
   // This function stores the currentUser in the sessionStorage.
   const handleLogin = (data) => {
@@ -21,7 +22,8 @@ function App() {
 
   // This function makes the value of the current user null, it means there's no current user logged in.
   const handleLogOut = () => {
-
+    sessionStorage.removeItem('userSession');
+    setCurrentUser(null);
   };
 
   // This hook will reload the information for the current user everytime the app reloads
@@ -34,7 +36,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LandingPage user={currentUser}/>,
+      element: <LandingPage user={currentUser} handleLogOut={handleLogOut}/>,
     },
     {
       path: "/login",
@@ -42,19 +44,19 @@ function App() {
     },
     {
       path: "/home",
-      element: <HomePage user={currentUser}/>,
+      element: <HomePage user={currentUser} handleLogOut={handleLogOut}/>,
     },
     {
       path: "/items/:id",
-      element: <ItemPage user={currentUser} />,
+      element: <ItemPage user={currentUser} handleLogOut={handleLogOut}/>,
     },
     {
       path: "/create-rental-item",
-      element: <CreateRentalItemPage user={currentUser}/>,
+      element: <CreateRentalItemPage user={currentUser} handleLogOut={handleLogOut}/>,
     },
     {
       path: "/profile",
-      element: <ProfilePage user={currentUser}/>,
+      element: <ProfilePage user={currentUser} handleLogOut={handleLogOut}/>,
     }
   ]);
 

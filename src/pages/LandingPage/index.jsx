@@ -5,11 +5,11 @@ import InformationCards from '../../components/InformationCards';
 import Faq from '../../components/Faq';
 import Footer from '../../components/Footer';
 
-function LandingPage({ title, user }) {
+function LandingPage({ title, user, handleLogOut }) {
 
   return (
     <>
-      <Navbar user={user}/>
+      <Navbar user={user} handleLogOut={handleLogOut}/>
       <Banner/>
       <InformationCards/>
       <Faq />

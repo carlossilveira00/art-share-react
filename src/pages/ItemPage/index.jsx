@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 
 const ITEM_API = "http://localhost:3000"
 
-const ItemPage = ({user}) => {
+const ItemPage = ({ user, handleLogOut }) => {
   const location = useLocation();
   const [item, setItem] = useState({});
 
@@ -20,7 +20,7 @@ const ItemPage = ({user}) => {
 
   return (
   <>
-    <Navbar user={user}/>
+    <Navbar user={user} handleLogOut={handleLogOut}/>
     <ItemImageGallery
       name = {item.name}
       category = {item.category}
