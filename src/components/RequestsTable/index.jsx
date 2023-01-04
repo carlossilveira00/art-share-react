@@ -30,17 +30,18 @@ const RequestsTable = ({content}) => {
     setPage(0);
   };
 
+  //Send PATCH request to update the status of the reservation from "Pending" to "Accepted".
   const handleAccept = (id) => {
     axios.patch('http://localhost:3000/handle_request', {status: 'Accepted', id: id})
     .then(response => window.location.reload())
 
   };
 
+  //Send PATCH request to update the status of the reservation from "Pending" to "Declined".
   const handleDecline = (id) => {
     axios.patch('http://localhost:3000/handle_request', {status: 'Declined', id: id})
     .then(response => window.location.reload())
   };
-
 
   return (
     <Paper sx={{ overflow: 'hidden' }}>

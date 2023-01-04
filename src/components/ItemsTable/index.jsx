@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import axios from 'axios';
 
 const columns = [
   { id: 'name', label: 'Name', minWidth: 170 },
@@ -29,6 +30,10 @@ const ItemsTable = ({ content }) => {
     setPage(0);
   };
 
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:3000/items/${id}`)
+    .then(response => window.location.reload())
+  };
 
 
   return (
