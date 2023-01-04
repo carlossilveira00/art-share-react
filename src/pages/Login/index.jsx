@@ -48,7 +48,7 @@ const Login = ({handleLogin}) => {
       <Navbar user={user}/>
       <LoginForm handleChange={handleChange} handleSubmit={handleSubmit}/>
       {user && (
-          <Navigate to="/test" replace={true} />
+          <Navigate to="/home" replace={true} />
         )}
     </div>
   )
