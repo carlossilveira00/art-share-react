@@ -9,6 +9,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ItemsTable from '../../components/ItemsTable';
+import RequestsTable from '../../components/RequestsTable';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -106,7 +107,7 @@ const ProfilePage = ({user}) => {
             <ItemsTable content={userItems} />
           </TabPanel>
           <TabPanel value={value} index={3}>
-            <ItemsTable content={userItems} />
+            <RequestsTable content={pendingRequests} />
           </TabPanel>
         </Box>
         {/* This section is the Items Board */}
