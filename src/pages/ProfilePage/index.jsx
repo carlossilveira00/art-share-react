@@ -44,7 +44,7 @@ function a11yProps(index) {
   };
 };
 
-const ProfilePage = ({user}) => {
+const ProfilePage = ({ user, handleLogOut }) => {
   const [currentRentings, setCurrentRentings] = useState([]);
   const [completedRentings, setCompletedRentings] = useState([]);
   const [userItems, setUserItems]= useState([]);
@@ -81,7 +81,7 @@ const ProfilePage = ({user}) => {
 
   return (
     <>
-      <Navbar user={user} />
+      <Navbar user={user} handleLogOut = {handleLogOut}/>
       <div className='container mx-auto flex mt-24'>
         {/* This section is the profile card */}
         <UserCard items={userItems.length} renting={currentRentings.length} completed={completedRentings.length}/>

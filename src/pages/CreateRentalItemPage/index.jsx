@@ -5,7 +5,7 @@ import CreateItemForm from '../../components/CreateItemForm';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 
-const CreateRentalItemPage = ({ user }) => {
+const CreateRentalItemPage = ({ user, handleLogOut }) => {
   const navigate = useNavigate();
   // Set Item information that will be send to the DB through a POST request to create an Item.
   const [itemInformation, setItemInformation] = useState({});
@@ -24,7 +24,7 @@ const CreateRentalItemPage = ({ user }) => {
 
   return (
     <>
-      <Navbar user={user}/>
+      <Navbar user={user} handleLogOut={handleLogOut}/>
       <CreateItemForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
