@@ -84,7 +84,7 @@ const ProfilePage = ({ user, handleLogOut }) => {
       <Navbar user={user} handleLogOut = {handleLogOut}/>
       <div className='container mx-auto flex mt-24'>
         {/* This section is the profile card */}
-        <UserCard items={userItems.length} renting={currentRentings.length} completed={completedRentings.length}/>
+        <UserCard user={user} items={userItems.length} renting={currentRentings.length} completed={completedRentings.length}/>
         {/* This section is the profile card */}
 
         {/* This section is the Items Board */}
