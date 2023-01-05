@@ -57,25 +57,25 @@ const ProfilePage = ({ user, handleLogOut }) => {
 
   //Fetch all the Item you're currently renting
   useEffect(()=> {
-    axios.get("http://localhost:3000/reservations", { params: {user_id: user.user_information.id}})
+    axios.get("http://localhost:3000/reservations", { params: {user_id: user.user_information.user.id}})
     .then(response => setCurrentRentings(response.data))
   },[]);
 
   //Fetch all the Item you completed renting
   useEffect(() => {
-    axios.get("http://localhost:3000/completed_reservations", { params: {user_id: user.user_information.id}})
+    axios.get("http://localhost:3000/completed_reservations", { params: {user_id: user.user_information.user.id}})
     .then(response => setCompletedRentings(response.data) )
   },[]);
 
   //Fetch all the Items that you created.
   useEffect(() => {
-    axios.get("http://localhost:3000/user_items", { params: {user_id: user.user_information.id}})
+    axios.get("http://localhost:3000/user_items", { params: {user_id: user.user_information.user.id}})
     .then(response => setUserItems(response.data) )
   },[]);
 
   // Fetch all the Items that have a status of pending and they belong to the current user.
   useEffect(() => {
-    axios.get("http://localhost:3000/pending_reservations", { params: {user_id: user.user_information.id}})
+    axios.get("http://localhost:3000/pending_reservations", { params: {user_id: user.user_information.user.id}})
     .then(response => setPendingRequests(response.data))
   },[]);
 

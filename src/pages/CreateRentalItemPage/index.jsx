@@ -12,7 +12,7 @@ const CreateRentalItemPage = ({ user, handleLogOut }) => {
   // Handle the change of of each field in the form to then set the state of the itemInformation.
   const handleChange = (event) => {
     event.preventDefault();
-    setItemInformation(Object.assign({}, itemInformation, {[event.target.name]: event.target.value},{user_id: user.user_information.id}))
+    setItemInformation(Object.assign({}, itemInformation, {[event.target.name]: event.target.value},{user_id: user.user_information.user.id}))
   };
   // Handle the submit will be the function that will be called when the user submits the form.
   // This function will take care of taking the itemInformation state and sending it to the API through an POST request.

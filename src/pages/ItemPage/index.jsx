@@ -27,7 +27,7 @@ const ItemPage = ({ user, handleLogOut }) => {
       location = {item.location}
     />
     <ItemDescription
-      user_id = {user.user_information.id}
+      user_id = {user.user_information.user.id}
       item_id={item.id}
       name = {item.name}
       description = {item.description}
