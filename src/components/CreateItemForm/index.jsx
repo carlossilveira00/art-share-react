@@ -40,8 +40,8 @@ const CreateItemForm = ({ handleChange, handleSubmit }) => {
           <input id="price" onChange={handleChange} name="price" type="number" className="w-1/6 py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow"/>
         </label>
         <label className='text-center'>
-          <p className="font-medium text-slate-700 pb-2">Image Url:</p>
-          <input id="image_url" onChange={handleChange} name="image_url" type="text" className="w-1/2 py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter image url.."/>
+          <p className="font-medium text-slate-700 pb-2">Upload Images:</p>
+          <input id="photos" name="photos" type="file" multiple className="w-1/2 py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter image url.."/>
         </label>
         <div className='text-center'>
           <button className="w-1/3 mb-5 py-3 font-medium text-white bg-green-500 hover:bg-green-600 rounded-lg hover:shadow inline-flex space-x-2 items-center justify-center">
