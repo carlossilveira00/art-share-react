@@ -37,9 +37,10 @@ const Login = ({handleLogin}) => {
         return response.json();
       })
       .then(data => {
+        console.log(data)
         //This function it's called from the App component, it's porpuse is to set the currentUser in the sessionStorage.
-        handleLogin({ user_information: data.status.data, user_token: userToken});
-        setUser({ user_information: data.status.data, user_token: userToken})
+        handleLogin({ user_information: data.status.data, user_avatar_url: data.user_avatar, user_token: userToken});
+        setUser({ user_information: data.status.data, user_avatar_url: data.user_avatar, user_token: userToken})
       })
 
   };
