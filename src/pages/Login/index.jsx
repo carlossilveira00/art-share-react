@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import LoginForm from '../../components/LoginForm';
 import Navbar from '../../components/Navbar';
 import { Navigate } from "react-router-dom";
+import RegisterForm from '../../components/RegisterForm';
 
 const Login = ({handleLogin}) => {
   // State for the Login form.
@@ -47,6 +48,7 @@ const Login = ({handleLogin}) => {
     <div>
       <Navbar user={user}/>
       <LoginForm handleChange={handleChange} handleSubmit={handleSubmit}/>
+      <RegisterForm/>
       {user && (
           <Navigate to="/home" replace={true} />
         )}
