@@ -10,6 +10,7 @@ import {
 import CreateRentalItemPage from './pages/CreateRentalItemPage';
 import ProfilePage from './pages/ProfilePage';
 import { Navigate } from "react-router-dom";
+import Register from './pages/Register';
 
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
   const handleLogOut = () => {
     sessionStorage.removeItem('userSession');
     setCurrentUser(null);
+  };
+
+  const handleRegistration = () => {
+
   };
 
   // This hook will reload the information for the current user everytime the app reloads
@@ -57,6 +62,10 @@ function App() {
     {
       path: "/profile",
       element: <ProfilePage user={currentUser} handleLogOut={handleLogOut}/>,
+    },
+    {
+      path: "/register",
+      element: <Register handleRegistration = {handleRegistration}/>,
     }
   ]);
 
