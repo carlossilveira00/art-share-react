@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ItemImageGallery = ({ name, category, location }) => {
+const ItemImageGallery = ({ photos, name, category, location }) => {
   return (
     <>
       <div className='container mx-auto w-4/6 pt-24 mb-2'>
@@ -9,14 +9,14 @@ const ItemImageGallery = ({ name, category, location }) => {
         <span className="text-green-500 text-xs underline uppercase">{location}</span>
       </div>
       <div className="container m-auto w-4/6 flex">
-        <img src="https://images.unsplash.com/photo-1672330145676-03a5b7cf7bde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Big image" className="w-1/2 rounded-l-lg" />
+        <img src={photos[0]} alt="Big image" className="w-1/2 rounded-l-lg" />
         <div className="w-1/4 ml-2">
-          <img src="https://images.unsplash.com/photo-1672330145676-03a5b7cf7bde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Small image 1" className='mb-2' />
-          <img src="https://images.unsplash.com/photo-1672330145676-03a5b7cf7bde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Small image 2" />
+          <img src={photos[1]} alt="Small image 1" className='mb-2' />
+          <img src={photos[2]} alt="Small image 2" />
         </div>
         <div className="w-1/4 ml-2">
-          <img src="https://images.unsplash.com/photo-1672330145676-03a5b7cf7bde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Small image 3" className='mb-2 rounded-tr-lg' />
-          <img src="https://images.unsplash.com/photo-1672330145676-03a5b7cf7bde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Small image 4" className='rounded-br-lg' />
+          <img src={photos[3]} alt="Small image 3" className='mb-2 rounded-tr-lg' />
+          <img src={photos[4]} alt="Small image 4" className='rounded-br-lg' />
         </div>
       </div>
     </>

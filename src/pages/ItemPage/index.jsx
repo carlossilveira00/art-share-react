@@ -12,10 +12,14 @@ const ITEM_API = "http://localhost:3000"
 const ItemPage = ({ user, handleLogOut }) => {
   const location = useLocation();
   const [item, setItem] = useState({});
+  const [itemPhotos, setItemPhotos] = useState({});
 
   useEffect(()=>{
     axios.get(ITEM_API + location.pathname)
-    .then(response => setItem(response.data))
+    .then(response => {
+      setItem(response.data.item);
+      setItemPhotos(response.data.photos_urls);
+    })
   },[]);
 
   return (
@@ -25,6 +29,7 @@ const ItemPage = ({ user, handleLogOut }) => {
       name = {item.name}
       category = {item.category}
       location = {item.location}
+      photos = {itemPhotos}
     />
     <ItemDescription
       user_id = {user.user_information.user.id}
