@@ -2,7 +2,7 @@ import React from 'react'
 
 const RegisterForm = ({handleChange, handleSubmit}) => {
   return (
-    <div className="max-w-lg mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
+    <div className="max-w-lg mx-auto my-10 mt-24 bg-white p-8 rounded-xl shadow shadow-slate-300">
       <h1 className="text-4xl font-medium">Register</h1>
       <p className="text-slate-500">Hi, join us now! 👋</p>
       <form action="" className="my-10" onSubmit={handleSubmit}>
@@ -37,6 +37,10 @@ const RegisterForm = ({handleChange, handleSubmit}) => {
             </svg>
             <span>Register</span>
           </button>
+          <p className="text-center">Already have an account? <a href="/login" className="text-green-500 font-medium inline-flex space-x-1 items-center"><span>Login now </span><span><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg></span></a>
+          </p>
         </div>
       </form>
     </div>
