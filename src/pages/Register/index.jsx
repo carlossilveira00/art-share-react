@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import LoginForm from '../../components/LoginForm';
 import Navbar from '../../components/Navbar';
-import { Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router';
 import RegisterForm from '../../components/RegisterForm';
 import axios from 'axios';
 
 const Register = ({handleRegistration}) => {
+  const navigate = useNavigate();
   // State for the Login form.
   const [registerInformation, setRegisterInformation] = useState({});
   let userToken = ''
@@ -22,12 +22,13 @@ const Register = ({handleRegistration}) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     axios.post('http://localhost:3000/users', {user: registerInformation})
-    .then(response => console.log(response))
+    .then(response => navigate('/home'))
     // handleRegistration({ user_information: data.status.data, user_token: userToken});
   };
 
   return (
     <div>
+      <Navbar />
       <RegisterForm handleChange={handleChange} handleSubmit={handleSubmit}/>
     </div>
   )
