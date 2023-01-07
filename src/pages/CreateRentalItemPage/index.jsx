@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import CreateItemForm from '../../components/CreateItemForm';
-import axios from 'axios';
 import { useNavigate } from 'react-router';
 
 const CreateRentalItemPage = ({ user, handleLogOut }) => {
@@ -44,7 +43,7 @@ const CreateRentalItemPage = ({ user, handleLogOut }) => {
     .then(data => console.log(data))
 
     //Redirect to Home after submission of the form.
-    // navigate('/home');
+    navigate('/home');
   };
 
   return (
