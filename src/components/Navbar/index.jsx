@@ -18,7 +18,7 @@ const Navbar = ({user, handleLogOut}) => {
           className="px-4 py-2 font-semibold text-black hover:text-gray-600 focus:outline-none focus:shadow-outline flex items-center"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <p>Profile</p>
+          <img className="w-10 h-10 mr-2 rounded-full" src={user.user_information.user_avatar} alt="Rounded avatar"/>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
             <path d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"/>
           </svg>
@@ -33,6 +33,8 @@ const Navbar = ({user, handleLogOut}) => {
       </div>
     </>
   }
+
+  console.log(user)
 
   return (
     <nav className="bg-white px-2 sm:px-4 py-2.5 w-full z-20 top-0 left-0 border-b fixed dark:border-gray-400">
