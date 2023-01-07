@@ -37,13 +37,11 @@ const CreateRentalItemPage = ({ user, handleLogOut }) => {
 
     formData.append('item[user_id]', user.user_information.user.id)
 
-
+    // POST request to API and then redirect to home page.
     fetch('http://localhost:3000/items', request)
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => navigate('/home'))
 
-    //Redirect to Home after submission of the form.
-    navigate('/home');
   };
 
   return (
