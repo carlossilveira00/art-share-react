@@ -37,7 +37,7 @@ const Navbar = ({user, handleLogOut}) => {
   return (
     <nav className="bg-white px-2 sm:px-4 py-2.5 w-full z-20 top-0 left-0 border-b fixed dark:border-gray-400">
       <div className="container flex flex-wrap items-center justify-between mx-auto">
-        <a href="/" className="flex items-center">
+        <a href="/home" className="flex items-center">
             <img src={logo} className="h-6 mr-3 sm:h-9" alt="Flowbite Logo"/>
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-gray-600">Art-Share</span>
         </a>
