@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import CreateItemForm from '../../components/CreateItemForm';
-import axios from 'axios';
 import { useNavigate } from 'react-router';
 
 const CreateRentalItemPage = ({ user, handleLogOut }) => {
@@ -20,8 +19,9 @@ const CreateRentalItemPage = ({ user, handleLogOut }) => {
     // Handle the change of the files, loop through them and attach them to the formData
     const handleFileChange = (e) => {
       const { files } = e.target;
+
       for (let i = 0; i < files.length; i++) {
-        formData.append('photos', files[i]);
+        formData.append(`photos[${files[i].name}]`, files[i]);
       }
     };
   // Handle the submit will be the function that will be called when the user submits the form.
@@ -29,26 +29,21 @@ const CreateRentalItemPage = ({ user, handleLogOut }) => {
   const handleSubmit = (event) => {
     event.preventDefault()
 
+    const request = {
+    method: "POST",
+    body: formData,
+    headers: {}
+  };
+
     formData.append('item[user_id]', user.user_information.user.id)
-    fetch('http://localhost:3000/items', {
-      method: "POST",
-      body: formData
-    })
+
+
+    fetch('http://localhost:3000/items', request)
     .then(response => response.json())
     .then(data => console.log(data))
 
     //Redirect to Home after submission of the form.
     navigate('/home');
-  };
-
-  const sumbitToApi = (data) => {
-
-    fetch('http://localhost:3000/items', {
-      method: "POST",
-      body: data
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
   };
 
   return (
