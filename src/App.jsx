@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import CreateRentalItemPage from './pages/CreateRentalItemPage';
 import ProfilePage from './pages/ProfilePage';
-import { Navigate } from "react-router-dom";
 import Register from './pages/Register';
 
 
@@ -25,6 +24,7 @@ function App() {
   const handleLogOut = () => {
     sessionStorage.removeItem('userSession');
     setCurrentUser(null);
+
   };
 
   const handleRegistration = () => {
